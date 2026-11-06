@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuelDrop | Contact</title>
+    <meta name="description" content="Order petrol, diesel or paraffin and follow the delivery driver live on the map.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { DEFAULT: '#0f1b2d', 800: '#1b2a42', 900: '#0f1b2d' },
+                        brand: { 400: '#f7b84b', 500: '#f5a623', 600: '#d98e0f' },
+                        cream: '#fff4df',
+                    },
+                    fontFamily: { sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'] },
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-100 text-navy font-sans antialiased" data-page="">
+    <!-- Start: Header -->
+    <header class="bg-navy text-white">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+            <a href="index.html" class="flex items-center gap-2 font-bold text-xl">
+                <i data-lucide="droplet" class="text-brand-500 fill-brand-500"></i>
+                FuelDrop
+            </a>
+            <nav class="flex flex-wrap items-center gap-6 text-slate-300">
+                <a href="index.html#how">How it works</a>
+                <a href="index.html#fuels">Fuels</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html" class="text-white">Sign in</a>
+                <a href="register.html" class="inline-block rounded-lg px-5 py-2.5 font-bold text-center bg-brand-500 text-navy !py-2">Get started</a>
+            </nav>
+        </div>
+    </header>
+    <!-- End: Header -->
+    <main class="max-w-xl mx-auto px-6 py-14">
+        <h1 class="text-3xl font-bold mb-6">Contact us</h1>
+        <!-- Start: Contact form -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-6">
+            <form onsubmit="event.preventDefault();alert('Message sent (demo).')" class="space-y-4">
+                <div class="">
+                    <label for="name" class="block text-sm mb-1">Name</label>
+                    <input id="name" name="name" type="text" value="" placeholder="" class="input-field">
+                </div>
+                <div class="">
+                    <label for="email" class="block text-sm mb-1">Email</label>
+                    <input id="email" name="email" type="email" value="" placeholder="" class="input-field">
+                </div>
+                <div>
+                    <label for="msg" class="block text-sm mb-1">Message</label>
+                    <textarea id="msg" rows="4" class="input-field"></textarea>
+                </div>
+                <button class="rounded-lg bg-brand-500 px-5 py-2.5 font-bold">Send</button>
+            </form>
+        </div>
+        <!-- End: Contact form -->
+    </main>
+    <!-- Start: Footer -->
+    <footer class="max-w-6xl mx-auto px-6 py-8 text-sm text-slate-500 flex justify-between"><span>FuelDrop</span><a href="contact.html">Contact</a></footer>
+    <!-- End: Footer -->
+
+    <script src="assets/js/app.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

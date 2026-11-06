@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuelDrop | Create account</title>
+    <meta name="description" content="Order petrol, diesel or paraffin and follow the delivery driver live on the map.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { DEFAULT: '#0f1b2d', 800: '#1b2a42', 900: '#0f1b2d' },
+                        brand: { 400: '#f7b84b', 500: '#f5a623', 600: '#d98e0f' },
+                        cream: '#fff4df',
+                    },
+                    fontFamily: { sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'] },
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-100 text-navy font-sans antialiased" data-page="">
+    <div class="min-h-screen grid place-items-center p-6 bg-navy">
+        <div class="w-full max-w-md">
+            <div class="text-white mb-6 flex justify-center">
+                <a href="index.html" class="flex items-center gap-2 font-bold text-xl">
+                    <i data-lucide="droplet" class="text-brand-500 fill-brand-500"></i>
+                    FuelDrop
+                </a>
+            </div>
+            <!-- Start: Create account form -->
+            <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                <h1 class="text-2xl font-bold">Create account</h1>
+                <p class="text-slate-500 mt-1 mb-6">Start ordering fuel in minutes.</p>
+                <form onsubmit="event.preventDefault();location.href='dashboard.html'" class="space-y-4">
+                    <div class="">
+                        <label for="n" class="block text-sm mb-1">Full name</label>
+                        <input id="n" name="n" type="text" value="" placeholder="" class="input-field">
+                    </div>
+                    <div class="">
+                        <label for="ph" class="block text-sm mb-1">Phone</label>
+                        <input id="ph" name="ph" type="tel" value="" placeholder="" class="input-field">
+                    </div>
+                    <div class="">
+                        <label for="e" class="block text-sm mb-1">Email</label>
+                        <input id="e" name="e" type="email" value="" placeholder="" class="input-field">
+                    </div>
+                    <div class="">
+                        <label for="p" class="block text-sm mb-1">Password</label>
+                        <input id="p" name="p" type="password" value="" placeholder="" class="input-field">
+                    </div>
+                    <button class="w-full rounded-lg bg-brand-500 py-3 font-bold">Create account</button>
+                </form>
+                <p class="text-center text-slate-500 mt-5 text-sm">Have an account? <a href="login.html" class="font-bold underline text-navy">Sign in</a></p>
+            </div>
+            <!-- End: Create account form -->
+        </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

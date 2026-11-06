@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuelDrop | Deliveries</title>
+    <meta name="description" content="Order petrol, diesel or paraffin and follow the delivery driver live on the map.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: { DEFAULT: '#0f1b2d', 800: '#1b2a42', 900: '#0f1b2d' },
+                        brand: { 400: '#f7b84b', 500: '#f5a623', 600: '#d98e0f' },
+                        cream: '#fff4df',
+                    },
+                    fontFamily: { sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'] },
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-slate-100 text-navy font-sans antialiased" data-page="">
+    <div class="md:flex min-h-screen">
+        <!-- Start: Sidebar -->
+        <aside class="bg-navy text-slate-300 md:w-64 p-4 md:fixed md:inset-y-0 flex md:flex-col gap-1 overflow-x-auto">
+            <div class="text-white px-4 py-3 md:mb-6">
+                <a href="../index.html" class="flex items-center gap-2 font-bold text-xl">
+                    <i data-lucide="droplet" class="text-brand-500 fill-brand-500"></i>
+                    FuelDrop
+                </a>
+            </div>
+            <a href="../driver/dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-lg whitespace-nowrap bg-white/10 text-white">
+                <i data-lucide="truck" class="w-5 h-5"></i>
+                Deliveries
+            </a>
+            <a href="../login.html" class="flex items-center gap-3 px-4 py-3 md:mt-auto hover:bg-white/5 rounded-lg whitespace-nowrap">
+                <i data-lucide="log-out" class="w-5 h-5"></i>
+                Sign out
+            </a>
+        </aside>
+        <!-- End: Sidebar -->
+
+        <!-- Start: Main content -->
+        <main class="flex-1 md:ml-64 p-6 md:p-10">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex flex-wrap justify-between items-center gap-3 mb-8">
+                    <h1 class="text-3xl font-bold">Deliveries</h1>
+                </div>
+                <!-- Start: Assigned deliveries -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                        <div class="flex justify-between">
+                            <h2 class="text-xl font-bold">Petrol · 40 L</h2>
+                            <span class="rounded-full px-3 py-1 text-xs font-medium bg-amber-100 text-amber-800">On the way</span>
+                        </div>
+                        <p class="text-slate-500 mt-2">FD-1042 · Ntinda, Kampala</p>
+                        <button onclick="this.textContent='Delivered ✓';this.disabled=true" class="mt-5 w-full rounded-lg bg-brand-500 py-2.5 font-bold disabled:opacity-60">Mark delivered</button>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-6">
+                        <div class="flex justify-between">
+                            <h2 class="text-xl font-bold">Diesel · 100 L</h2>
+                            <span class="rounded-full px-3 py-1 text-xs font-medium bg-amber-100 text-amber-800">On the way</span>
+                        </div>
+                        <p class="text-slate-500 mt-2">FD-1044 · Industrial Area, Kampala</p>
+                        <button onclick="this.textContent='Delivered ✓';this.disabled=true" class="mt-5 w-full rounded-lg bg-brand-500 py-2.5 font-bold disabled:opacity-60">Mark delivered</button>
+                    </div>
+                </div>
+                <!-- End: Assigned deliveries -->
+            </div>
+        </main>
+        <!-- End: Main content -->
+    </div>
+
+    <script src="../assets/js/app.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

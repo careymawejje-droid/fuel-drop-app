@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FuelDrop – Fuel delivered to you</title>
+<!-- DM Sans font from Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- All styling for the site -->
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="">
+<!-- PAGE: Landing page: hero, how it works, fuel prices, fleet banner -->
+<!-- TOP NAVIGATION BAR (public pages) -->
+<header class="topbar">
+    <div class="in">
+        <a class="logo" href="index.html">
+            <span class="drop"></span>
+            FuelDrop
+        </a>
+        <nav>
+            <a href="index.html#how">How it works</a>
+            <a href="index.html#fuels">Fuels</a>
+            <a href="contact.html">Contact</a>
+            <a href="login.html">Sign in</a>
+            <a href="register.html" class="btn primary ">Get started</a>
+        </nav>
+    </div>
+</header>
+<!-- HERO: headline and call-to-action buttons -->
+<section class="hero"> 
+    <div class="in">
+        <h1>Fuel, delivered to where you are.</h1>
+        <p>Order petrol, diesel or paraffin in a few taps. Track the driver and pay from your phone.</p>
+        <div class="row">
+            <a href="orders/create.html" class="btn primary ">Order fuel</a>
+            <a href="#how" class="btn ghost ">See how it works</a>
+        </div>
+    </div>
+</section>
+<!-- HOW IT WORKS: three step cards -->
+<section class="section" id="how">
+    <h2>How it works</h2>
+    <div class="grid3">
+        <div class="card pad-s">
+            <div class="tag">Step 1</div>
+            <h3>Choose your fuel</h3>
+            <p class="muted" style="margin-top:8px">Pick the type and quantity, then set the delivery address.</p>
+        </div>
+        <div class="card pad-s">
+            <div class="tag">Step 2</div>
+            <h3>Pay securely</h3>
+            <p class="muted" style="margin-top:8px">Mobile money, card or pay on delivery.</p>
+        </div>
+        <div class="card pad-s">
+            <div class="tag">Step 3</div>
+            <h3>Track the driver</h3>
+            <p class="muted" style="margin-top:8px">Follow the truck live until it reaches you.</p>
+        </div>
+    </div>
+</section>
+<!-- FUELS AND PRICES: prices are filled in by app.js (data-price) -->
+<section class="section" id="fuels">
+    <h2>Fuels and prices</h2>
+    <div class="grid3">
+        <div class="card pad-s">
+            <h3>Petrol</h3>
+            <p class="muted" style="margin-top:6px">UGX <span data-price="petrol"></span> per litre</p>
+            <a href="orders/create.html" class="btn outline block">Order petrol</a>
+        </div>
+        <div class="card pad-s">
+            <h3>Diesel</h3>
+            <p class="muted" style="margin-top:6px">UGX <span data-price="diesel"></span> per litre</p>
+            <a href="orders/create.html" class="btn outline block">Order diesel</a>
+        </div>
+        <div class="card pad-s">
+            <h3>Paraffin</h3>
+            <p class="muted" style="margin-top:6px">UGX <span data-price="paraffin"></span> per litre</p>
+            <a href="orders/create.html" class="btn outline block">Order paraffin</a>
+        </div>
+    </div>
+</section>
+<!-- FLEET BANNER -->
+<section class="section">
+    <div class="cta">
+        <div>
+            <h2>Running a fleet or a site?</h2>
+            <p>Manage vehicles, schedule recurring deliveries and get one invoice for every order.</p>
+        </div>
+        <a href="contact.html" class="btn primary ">Talk to us</a>
+    </div>
+</section>
+<!-- FOOTER -->
+<footer class="footer"><span>FuelDrop</span><a href="contact.html">Contact</a></footer>
+<!-- Shared page logic: order state, totals, map and tracking simulation -->
+<script src="assets/js/app.js"></script>
+</body>
+</html>
