@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FuelDrop – Fuel delivered to you</title>
+    <!-- DM Sans font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+</head>
+<body class="bg-slate-100 text-slate-900 antialiased" data-page="">
+
+@php
+    // Who may place an order from this page, and where the order buttons should go
+    $canPlaceOrder = auth()->check()
+        && auth()->user()->hasRole('customer')
+        && auth()->user()->can('view available fuels')
+        && auth()->user()->can('place orders');
+    $orderUrl = $canPlaceOrder ? route('customer.orders.create') : (auth()->check() ? route('home') : route('login'));
+
+    // Order buttons show for guests and for customers who may order
+    $showOrderButtons = ! auth()->check() || $canPlaceOrder;
+
+    // The three fuels; data-price spans are filled in by app.js
+    $fuels = [
+        ['key' => 'petrol',   'name' => 'Petrol'],
+        ['key' => 'diesel',   'name' => 'Diesel'],
+        ['key' => 'paraffin', 'name' => 'Paraffin'],
+    ];
+
+    // The three "how it works" steps
+    $steps = [
+        ['icon' => 'fuel',        'title' => 'Choose your fuel',  'text' => 'Pick the type and quantity, then set the delivery address.'],
+        ['icon' => 'wallet',      'title' => 'Pay securely',      'text' => 'Mobile money, card or pay on delivery.'],
+        ['icon' => 'map-pin',     'title' => 'Track the driver',  'text' => 'Follow the truck live until it reaches you.'],
+    ];
+@endphp
+
+    <!-- TOP NAVIGATION BAR (public pages): white bar, brand on the left, links on the right -->
+    <header class="border-b border-slate-200 bg-white">
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+            <a href="{{ route('landing') }}" class="flex items-center gap-2 text-lg font-bold focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">
+                <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-400 text-slate-900"><i data-lucide="droplet" class="h-4 w-4"></i></span>
+                FuelDrop
+            </a>
+
+            @if (Route::has('login'))
+                <nav class="flex items-center gap-5 text-sm" aria-label="Main navigation">
+                    @auth
+                        <!-- Signed in: link to the user's dashboard, plus Contact -->
+                        <a href="{{ route('home') }}" class="font-medium text-slate-600 transition hover:text-slate-900">Dashboard</a>
+                        <a href="{{ route('contact') }}" class="font-medium text-slate-600 transition hover:text-slate-900">Contact</a>
+                    @else
+                        <!-- Guest: sign in, and Get started when registration is open -->
+                        <a href="{{ route('login') }}" class="font-medium text-slate-600 transition hover:text-slate-900">Sign in</a>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="rounded-lg bg-amber-400 px-4 py-2 font-bold text-slate-900 transition hover:bg-amber-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2">Get started</a>
+                        @endif
+                    @endauth
+                </nav>
+            @endif
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO: headline and call-to-action buttons -->
+        <section class="bg-slate-900 text-white">
+            <div class="mx-auto max-w-6xl px-6 py-20 sm:py-28">
+                <h1 class="max-w-2xl text-4xl font-bold leading-tight sm:text-5xl">Fuel, delivered to where you are.</h1>
+                <p class="mt-4 max-w-xl text-lg text-slate-300">Order petrol, diesel or paraffin in a few taps. Track the driver and pay from your phone.</p>
+                <div class="mt-8 flex flex-wrap gap-3">
+                    @if ($showOrderButtons)
+                        <a href="{{ $orderUrl }}" class="rounded-lg bg-amber-400 px-6 py-3 font-bold text-slate-900 transition hover:bg-amber-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900">Order fuel</a>
+                    @endif
+                    <a href="#how" class="rounded-lg border border-slate-600 px-6 py-3 font-bold text-white transition hover:bg-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300">See how it works</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS: three step cards -->
+        <section class="mx-auto max-w-6xl px-6 py-16" id="how">
+            <h2 class="text-2xl font-bold">How it works</h2>
+            <div class="mt-6 grid gap-5 md:grid-cols-3">
+                @foreach ($steps as $step)
+                    <div class="rounded-xl border border-slate-200 bg-white p-6">
+                        <span class="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-100 text-amber-700"><i data-lucide="{{ $step['icon'] }}" class="h-5 w-5"></i></span>
+                        <p class="mt-4 text-sm font-medium text-slate-500">Step {{ $loop->iteration }}</p>
+                        <h3 class="mt-1 text-lg font-bold">{{ $step['title'] }}</h3>
+                        <p class="mt-2 text-slate-600">{{ $step['text'] }}</p>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+        <!-- FUELS AND PRICES: prices are filled in by app.js (data-price) -->
+        <section class="mx-auto max-w-6xl px-6 pb-16" id="fuels">
+            <h2 class="text-2xl font-bold">Fuels and prices</h2>
+            <div class="mt-6 grid gap-5 md:grid-cols-3">
+                @foreach ($fuels as $fuel)
+                    <div class="flex flex-col rounded-xl border border-slate-200 bg-white">
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold">{{ $fuel['name'] }}</h3>
+                            <p class="mt-1 text-slate-600">UGX <span class="font-semibold tabular-nums text-slate-900" data-price="{{ $fuel['key'] }}"></span> per litre</p>
+                        </div>
+                        @if ($showOrderButtons)
+                            <div class="mt-auto border-t border-slate-200 bg-slate-50 px-6 py-4">
+                                <a href="{{ $orderUrl }}" class="flex w-full justify-center rounded-lg border border-slate-300 bg-white px-4 py-2.5 font-bold transition hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400">Order {{ strtolower($fuel['name']) }}</a>
+                            </div>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+        <!-- FLEET BANNER -->
+        <section class="mx-auto max-w-6xl px-6 pb-16">
+            <div class="flex flex-wrap items-center justify-between gap-6 rounded-xl bg-slate-900 p-8 text-white">
+                <div class="max-w-xl">
+                    <h2 class="text-2xl font-bold">Running a fleet or a site?</h2>
+                    <p class="mt-2 text-slate-300">Manage vehicles, schedule recurring deliveries and get one invoice for every order.</p>
+                </div>
+                <a href="{{ route('contact') }}" class="rounded-lg bg-amber-400 px-6 py-3 font-bold text-slate-900 transition hover:bg-amber-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900">Talk to us</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-200 bg-white">
+        <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 text-sm text-slate-600">
+            <span class="font-bold text-slate-900">FuelDrop</span>
+            <a href="{{ route('contact') }}" class="transition hover:text-slate-900">Contact</a>
+        </div>
+    </footer>
+
+    <!-- Render Lucide icons -->
+    <script>lucide.createIcons();</script>
+    <!-- Shared page logic: fills in the fuel prices (data-price) and runs the rest of the site's scripts -->
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+</body>
+</html>

@@ -4,23 +4,22 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Attributes\Fillable;
-use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
-#[Fillable(['name', 'email', 'password'])]
-#[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
+    use HasApiTokens;
+
     /** @use HasFactory<UserFactory> */
-<<<<<<< Updated upstream
-    use HasFactory, Notifiable;
-=======
     use HasFactory;
 
     use HasProfilePhoto;
@@ -61,7 +60,6 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
->>>>>>> Stashed changes
 
     /**
      * Get the attributes that should be cast.
@@ -75,8 +73,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-<<<<<<< Updated upstream
-=======
 
     // Relationships
     public function addresses(): HasMany
@@ -108,5 +104,4 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Provider::class)->withPivot('is_active')->withTimestamps();
     }
->>>>>>> Stashed changes
 }

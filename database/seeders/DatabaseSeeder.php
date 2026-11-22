@@ -15,18 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-<<<<<<< Updated upstream
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-=======
         $this->call([
             RolePermissionSeeder::class,
             FuelSeeder::class,
             UserSeeder::class,
->>>>>>> Stashed changes
         ]);
 
         if (app()->environment(['local', 'testing'])) {

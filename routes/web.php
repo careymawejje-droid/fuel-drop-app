@@ -1,11 +1,5 @@
 <?php
 
-<<<<<<< Updated upstream
-use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-=======
 use App\Http\Controllers\Admin\BranchFuelController;
 use App\Http\Controllers\Admin\BranchOverviewController;
 use App\Http\Controllers\Admin\PlatformOrderController;
@@ -266,7 +260,6 @@ Route::middleware(['auth', 'role:customer'])->prefix('customer')->name('customer
     Route::get('/orders/{order}', [CustomerOrderController::class, 'show'])
         ->middleware(['permission:view own orders', 'can:view,order'])
         ->name('orders.show');
->>>>>>> Stashed changes
 });
 
 Route::get('/orders/{order}', [OrderAccessController::class, 'show'])
