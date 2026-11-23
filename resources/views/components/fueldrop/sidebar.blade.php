@@ -92,6 +92,7 @@
     </form>
 </aside>
 
+{{-- Mobile keeps the existing brand and hamburger drawer for role navigation. --}}
 <header class="relative z-20 border-b border-slate-200 bg-white px-4 py-3 lg:hidden">
     <div class="flex items-center justify-between gap-4">
         <a href="{{ route($dashboardRoute) }}" class="flex items-center gap-2 font-bold text-slate-900">

@@ -8,22 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Tailwind config: same colours and font as before, so the shared stylesheet keeps working
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: { DEFAULT: '#0f1b2d', 800: '#1b2a42', 900: '#0f1b2d' },
-                        brand: { 400: '#f7b84b', 500: '#f5a623', 600: '#d98e0f' },
-                        cream: '#fff4df',
-                    },
-                    fontFamily: { sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'] },
-                }
-            }
-        };
-    </script>
+    {{-- Fetch the shared styles before Tailwind's remote script to avoid delaying mobile rendering. --}}
+    @vite(['resources/css/app.css'])
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -43,6 +29,7 @@
 
 @include('components.fueldrop.sidebar', ['role' => 'customer'])
 <div class="min-h-screen lg:ml-64">
+    {{-- Keep the existing desktop identity bar, applying only shared theme styling. --}}
     <header class="hidden border-b border-slate-200 bg-white px-6 py-4 lg:block">
         <p class="text-sm text-slate-500">Signed in as <span class="font-medium text-slate-900">{{ $user->name }}</span></p>
     </header>

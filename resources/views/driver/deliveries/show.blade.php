@@ -76,7 +76,9 @@
             }
             window.fuelDropSetCurrentDriverPosition = (latitude, longitude) => {
                 const point = [latitude, longitude];
-                if (!window.fuelDropDriverMarker) window.fuelDropDriverMarker = L.circleMarker(point, {radius: 8, color: '#2563eb', fillColor: '#2563eb', fillOpacity: 0.9}).addTo(map).bindPopup('Your current GPS position');
+                // Read the delivery marker color from the single shared palette.
+                const driverColor = getComputedStyle(document.documentElement).getPropertyValue('--fd-forest').trim();
+                if (!window.fuelDropDriverMarker) window.fuelDropDriverMarker = L.circleMarker(point, {radius: 8, color: driverColor, fillColor: driverColor, fillOpacity: 0.9}).addTo(map).bindPopup('Your current GPS position');
                 else window.fuelDropDriverMarker.setLatLng(point);
                 if (lat === null || lng === null) map.setView(point, 15);
             };
