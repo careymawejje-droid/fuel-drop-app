@@ -6,30 +6,17 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>FuelDrop | Sign up</title>
 
-    {{-- Same font, Tailwind setup and icons as the dashboards --}}
+    {{-- Load the shared FuelDrop palette stylesheet with Tailwind and Lucide. --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: { DEFAULT: '#0f1b2d', 800: '#1b2a42', 900: '#0f1b2d' },
-                        brand: { 400: '#f7b84b', 500: '#f5a623', 600: '#d98e0f' },
-                        cream: '#fff4df',
-                    },
-                    fontFamily: { sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'] },
-                }
-            }
-        };
-    </script>
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-slate-100 text-navy font-sans antialiased min-h-screen flex items-center justify-center px-4 py-8">
 
-    {{-- Sign up card --}}
+    {{-- Keep the existing registration card and logo structure on the shared palette. --}}
     <div class="w-full max-w-md bg-white border border-slate-200 rounded-2xl shadow-sm p-8">
 
         {{-- Logo and heading --}}

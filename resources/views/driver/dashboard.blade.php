@@ -9,20 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: { DEFAULT: '#0f1b2d', 800: '#1b2a42', 900: '#0f1b2d' },
-                        brand: { 400: '#f7b84b', 500: '#f5a623', 600: '#d98e0f' },
-                        cream: '#fff4df',
-                    },
-                    fontFamily: { sans: ['DM Sans', 'system-ui', '-apple-system', 'sans-serif'] },
-                }
-            }
-        };
-    </script>
+    {{-- Reuse shared palette and spacing for the driver dashboard. --}}
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>

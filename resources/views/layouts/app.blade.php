@@ -13,11 +13,13 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- Share the palette with Vite-rendered authenticated pages. --}}
+        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased fd-vite-layout">
         <x-banner />
 
         @php

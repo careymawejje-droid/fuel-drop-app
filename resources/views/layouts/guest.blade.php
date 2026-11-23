@@ -13,11 +13,13 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- Share the palette with Vite-rendered guest and authentication pages. --}}
+        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
 
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body>
+    <body class="fd-vite-layout">
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
