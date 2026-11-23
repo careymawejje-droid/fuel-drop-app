@@ -339,9 +339,11 @@ svg[viewBox="0 0 317 48"] { color: var(--fd-forest); }
 /* On small screens, stack each two-column section and keep navigation and quote fields within the viewport. */
 @media (max-width: 640px) {
     .fd-container { width: min(100% - 32px, 520px); }
-    .fd-header-inner { display: grid; grid-template-columns: 1fr auto; }
-    .fd-main-nav { grid-column: 1 / -1; order: initial; justify-content: space-between; gap: 10px; padding-top: 6px; font-size: 14px; }
-    .fd-account-nav { justify-content: end; gap: 10px; }
+    /* Pin the logo and account action to row one; keep all section links together on row two. */
+    .fd-header-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+    .fd-brand { grid-column: 1; grid-row: 1; }
+    .fd-main-nav { grid-column: 1 / -1; grid-row: 2; order: initial; justify-content: space-between; gap: 10px; padding-top: 6px; font-size: 14px; }
+    .fd-account-nav { grid-column: 2; grid-row: 1; justify-content: end; gap: 10px; }
     .fd-account-nav .fd-header-contact { display: none; }
     .fd-button { min-height: 46px; padding: 10px 15px; font-size: 15px; }
     .fd-hero { padding-block: 44px 28px; }
