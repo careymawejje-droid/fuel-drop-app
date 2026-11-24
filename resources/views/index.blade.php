@@ -56,11 +56,6 @@
                 <span class="fd-brand-tile"><i data-lucide="droplet" aria-hidden="true"></i></span>
                 <span>FuelDrop</span>
             </a>
-            <nav class="fd-main-nav" aria-label="Main navigation">
-                <a href="#how">How it works</a>
-                <a href="#why">Why FuelDrop</a>
-                <a href="#prices">Prices</a>
-            </nav>
             <nav class="fd-account-nav" aria-label="Account navigation">
                 @auth
                     <a class="fd-button fd-button-light" href="{{ route('home') }}">Dashboard</a>
@@ -86,12 +81,6 @@
                         <p class="fd-eyebrow">Fuel delivery across Uganda</p>
                         <h1>Fuel, delivered to where you are.</h1>
                         <p class="fd-hero-description">Order petrol or diesel in a few taps. Track the driver and pay from your phone.</p>
-                        <div class="fd-button-row">
-                            @if ($showOrderButtons)
-                                <a href="{{ $orderUrl }}" class="fd-button fd-button-amber">Order fuel</a>
-                            @endif
-                            <a href="#how" class="fd-button fd-button-outline">See how it works</a>
-                        </div>
                     </div>
                     <div class="fd-map-card">
                         <img src="{{ asset('assets/img/uganda-map.jpg') }}" alt="Map of Uganda showing FuelDrop's delivery area" width="900" height="900" class="fd-hero-image">
